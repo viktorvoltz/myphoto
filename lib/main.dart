@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: GreatPlaces(),
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
         title: 'Great Places',
         theme: ThemeData(accentColor: Colors.amber, primarySwatch: Colors.indigo),
         home: PlacesListScreen(),
