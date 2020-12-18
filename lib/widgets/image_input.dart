@@ -22,6 +22,9 @@ class _ImageInputState extends State<ImageInput> {
       source: ImageSource.camera,
       maxWidth: 600,
     );
+    if (imageFile == null){
+      return;
+    }
     setState(() {
       _storedImage = File(imageFile.path);
     });
@@ -33,10 +36,11 @@ class _ImageInputState extends State<ImageInput> {
 
   @override
   Widget build(BuildContext context) {
+     var size = MediaQuery.of(context).size;
     return Row(
       children: <Widget>[
         Container(
-          width: 200,
+          width: size.width * 0.5,
           height: 100,
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey),
@@ -54,12 +58,13 @@ class _ImageInputState extends State<ImageInput> {
           width: 10,
         ),
         Expanded(
-            child: FlatButton.icon(
-          icon: Icon(Icons.camera),
-          label: Text('Take Picture'),
-          textColor: Theme.of(context).primaryColor,
-          onPressed: _takePicture,
-        )),
+              child: FlatButton.icon(
+            icon: Icon(Icons.camera),
+            label: Text('Take Picture',),
+            textColor: Theme.of(context).primaryColor,
+            onPressed: _takePicture,
+          )),
+        
       ],
     );
   }
